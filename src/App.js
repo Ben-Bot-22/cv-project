@@ -7,21 +7,40 @@ const styles = {
   justifyContent: 'center',
   gap: '1rem',
 };
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      name: 'Name',
+      title: 'Title',
+      email: 'Email',
+      phone: 'Phone',
+      location: 'Location',
+      description: 'Description...',
+    };
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
 
-function App() {
-  return (
-    <div style={styles}>
-      <Form />
-      <Display />
-    </div>
-  );
+  handleInputChange(event) {
+    console.log(event.target.name + ' ' + event.target.value);
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  }
+
+  render() {
+    return (
+      <div style={styles}>
+        <Form onChange={this.handleInputChange} />
+        <Display data={this.state} />
+      </div>
+    );
+  }
 }
 
 export default App;
 
 /*
-
-general information like name, email, phone number. 
 
 educational experience (school name, title of study, date
 of study)
