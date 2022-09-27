@@ -1,3 +1,3 @@
-# Getting Started with Create React App
+# CV Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is part of the [Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-cv-application). The purpose is to practice using React to develop a web application.

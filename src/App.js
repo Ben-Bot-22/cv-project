@@ -130,8 +130,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-/*
-Run lighthouse audit
-React profiler
-*/
