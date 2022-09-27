@@ -39,7 +39,6 @@ export default class GeneralDisplay extends Component {
         <div style={styles}>
           <div>
             <h2 style={nameStyle}>{this.props.data.name}</h2>
-            {/* <DisplayName /> */}
             <h3 style={titleStyle}>{this.props.data.title}</h3>
           </div>
           <div style={dataStyle}>

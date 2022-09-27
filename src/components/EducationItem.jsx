@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Input from './Input';
-import TextArea from './TextArea';
 
 const styles = {
   form: {
@@ -18,23 +17,24 @@ const styles = {
   },
 };
 
-export default class ExperienceItem extends Component {
+export default class EducationItem extends Component {
   render() {
+    // console.log(this.props);
     return (
       <div style={styles.form}>
         <Input
-          name="organization"
+          name="university"
           type="Text"
-          placeholder="Organization"
+          placeholder="university"
           onChange={(e) =>
-            this.props.onExperienceChange(e, this.props.experience.id)
+            this.props.onEducationChange(e, this.props.education.id)
           }></Input>
         <Input
-          name="position"
+          name="course"
           type="Text"
-          placeholder="Position"
+          placeholder="course"
           onChange={(e) =>
-            this.props.onExperienceChange(e, this.props.experience.id)
+            this.props.onEducationChange(e, this.props.education.id)
           }></Input>
         <Input
           name="startDate"
@@ -43,7 +43,7 @@ export default class ExperienceItem extends Component {
           max="2099"
           placeholder="Start"
           onChange={(e) =>
-            this.props.onExperienceChange(e, this.props.experience.id)
+            this.props.onEducationChange(e, this.props.education.id)
           }></Input>
         <Input
           name="endDate"
@@ -52,20 +52,13 @@ export default class ExperienceItem extends Component {
           max="2099"
           placeholder="End"
           onChange={(e) =>
-            this.props.onExperienceChange(e, this.props.experience.id)
+            this.props.onEducationChange(e, this.props.education.id)
           }></Input>
-        <TextArea
-          name="description"
-          type="Text"
-          placeholder="Description"
-          onChange={(e) =>
-            this.props.onExperienceChange(e, this.props.experience.id)
-          }></TextArea>
         <button
           style={styles.button}
-          onClick={this.props.onDeleteExperience.bind(
+          onClick={this.props.onDeleteEducation.bind(
             this,
-            this.props.experience.id,
+            this.props.education.id,
           )}>
           Delete
         </button>

@@ -14,16 +14,23 @@ const styles = {
 
 export default class Form extends Component {
   render() {
+    // console.log('Form Props:');
+    // console.log(this.props);
     return (
       <div style={styles}>
         <GeneralForm onChange={this.props.onChange} />
         <ExperienceForm
           data={this.props.data}
-          onChange={this.props.onChange}
+          onExperienceChange={this.props.onExperienceChange}
           onAddExperience={this.props.onAddExperience}
-          onDelete={this.props.onDelete}
+          onDeleteExperience={this.props.onDeleteExperience}
         />
-        <EducationForm />
+        <EducationForm
+          data={this.props.data}
+          onEducationChange={this.props.onEducationChange}
+          onAddEducation={this.props.onAddEducation}
+          onDeleteEducation={this.props.onDeleteEducation}
+        />
       </div>
     );
   }

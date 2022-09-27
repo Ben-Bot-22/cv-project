@@ -9,12 +9,6 @@ const styles = {
     width: '100%',
     color: 'blue',
   },
-  // buttonContainer: {
-  //   display: 'flex',
-  //   flexDirection: 'column',
-  //   gap: '5px',
-  //   height: '25px',
-  // },
   button: {
     color: 'blue',
     border: '1px solid blue',
@@ -24,8 +18,8 @@ const styles = {
 };
 
 export default class ExperienceForm extends Component {
-  // console.log({ this.props });
   render() {
+    // console.log(this.props);
     return (
       <div style={styles.form}>
         <h3>Experience</h3>
@@ -34,8 +28,8 @@ export default class ExperienceForm extends Component {
             <ExperienceItem
               key={experience.id}
               experience={experience}
-              onChange={this.props.onChange}
-              onDelete={this.props.onDelete}
+              onExperienceChange={this.props.onExperienceChange}
+              onDeleteExperience={this.props.onDeleteExperience}
             />
           );
         })}

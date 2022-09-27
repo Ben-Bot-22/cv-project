@@ -17,32 +17,59 @@ class App extends React.Component {
       experiences: [],
       experience: {
         id: uuidv4(),
-        organization: 'Organization',
-        position: 'Position',
-        startDate: 'Start Date',
-        endDate: 'End Date',
-        description: 'Description',
+        organization: '',
+        position: '',
+        startDate: '',
+        endDate: '',
+        description: '',
       },
       educations: [],
       education: {
         id: uuidv4(),
-        course: 'course / program',
-        university: 'university',
-        startDate: 'Start Date',
-        endDate: 'End Date',
+        university: '',
+        course: '',
+        startDate: '',
+        endDate: '',
       },
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleAddExperience = this.handleAddExperience.bind(this);
     this.deleteExperience = this.deleteExperience.bind(this);
+    this.deleteEducation = this.deleteEducation.bind(this);
+    this.handleExperienceChange = this.handleExperienceChange.bind(this);
+    this.handleAddEducation = this.handleAddEducation.bind(this);
+    this.handleEducationChange = this.handleEducationChange.bind(this);
   }
 
   handleInputChange(event) {
-    // console.log(event.target.name + ' ' + event.target.value);
     this.setState({
       [event.target.name]: event.target.value,
     });
   }
+
+  handleExperienceChange = (event, id) => {
+    this.setState((state) => ({
+      experiences: state.experiences.map((exp) => {
+        if (exp.id === id) {
+          return { ...exp, [event.target.name]: event.target.value };
+        } else {
+          return exp;
+        }
+      }),
+    }));
+  };
+
+  handleEducationChange = (event, id) => {
+    this.setState((state) => ({
+      educations: state.educations.map((edu) => {
+        if (edu.id === id) {
+          return { ...edu, [event.target.name]: event.target.value };
+        } else {
+          return edu;
+        }
+      }),
+    }));
+  };
 
   handleAddExperience(e) {
     this.setState((state) => ({
@@ -51,17 +78,35 @@ class App extends React.Component {
         id: uuidv4(),
         organization: 'Organization',
         position: 'Position',
-        startDate: 'Start Date',
-        endDate: 'End Date',
+        startDate: 'Start',
+        endDate: 'End',
         description: 'Description',
       },
     }));
   }
 
+  handleAddEducation(e) {
+    this.setState((state) => ({
+      educations: state.educations.concat(state.education),
+      education: {
+        id: uuidv4(),
+        university: 'University',
+        course: 'Course',
+        startDate: 'Start',
+        endDate: 'End',
+      },
+    }));
+  }
+
   deleteExperience = (id) => {
-    console.log('handle detele ' + id);
     this.setState((state) => ({
       experiences: state.experiences.filter((exp) => exp.id !== id),
+    }));
+  };
+
+  deleteEducation = (id) => {
+    this.setState((state) => ({
+      educations: state.educations.filter((edu) => edu.id !== id),
     }));
   };
 
@@ -71,8 +116,12 @@ class App extends React.Component {
         <Form
           data={this.state}
           onChange={this.handleInputChange}
+          onExperienceChange={this.handleExperienceChange}
           onAddExperience={this.handleAddExperience}
-          onDelete={this.deleteExperience}
+          onDeleteExperience={this.deleteExperience}
+          onEducationChange={this.handleEducationChange}
+          onDeleteEducation={this.deleteEducation}
+          onAddEducation={this.handleAddEducation}
         />
         <Display data={this.state} />
       </div>
@@ -83,19 +132,6 @@ class App extends React.Component {
 export default App;
 
 /*
-
-- Modify onChange to process index
--- Handle change in Form
--- Handle data in Display
-
-************
-
-Button hover effect
-
-- educational experience (school name, title of study, date
-of study)
-
-- education form
-- education display
-
+Run lighthouse audit
+React profiler
 */
