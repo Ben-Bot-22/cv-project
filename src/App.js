@@ -1,12 +1,9 @@
 import React from 'react';
 import Form from './components/Form';
 import Display from './components/Display';
+import './styles/index.css';
+import { v4 as uuidv4 } from 'uuid';
 
-const styles = {
-  display: 'flex',
-  justifyContent: 'center',
-  gap: '1rem',
-};
 class App extends React.Component {
   constructor() {
     super();
@@ -17,21 +14,66 @@ class App extends React.Component {
       phone: 'Phone',
       location: 'Location',
       description: 'Description...',
+      experiences: [],
+      experience: {
+        id: uuidv4(),
+        organization: 'Organization',
+        position: 'Position',
+        startDate: 'Start Date',
+        endDate: 'End Date',
+        description: 'Description',
+      },
+      educations: [],
+      education: {
+        id: uuidv4(),
+        course: 'course / program',
+        university: 'university',
+        startDate: 'Start Date',
+        endDate: 'End Date',
+      },
     };
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleAddExperience = this.handleAddExperience.bind(this);
+    this.deleteExperience = this.deleteExperience.bind(this);
   }
 
   handleInputChange(event) {
-    console.log(event.target.name + ' ' + event.target.value);
+    // console.log(event.target.name + ' ' + event.target.value);
     this.setState({
       [event.target.name]: event.target.value,
     });
   }
 
+  handleAddExperience(e) {
+    this.setState((state) => ({
+      experiences: state.experiences.concat(state.experience),
+      experience: {
+        id: uuidv4(),
+        organization: 'Organization',
+        position: 'Position',
+        startDate: 'Start Date',
+        endDate: 'End Date',
+        description: 'Description',
+      },
+    }));
+  }
+
+  deleteExperience = (id) => {
+    console.log('handle detele ' + id);
+    this.setState((state) => ({
+      experiences: state.experiences.filter((exp) => exp.id !== id),
+    }));
+  };
+
   render() {
     return (
-      <div style={styles}>
-        <Form onChange={this.handleInputChange} />
+      <div className="forms">
+        <Form
+          data={this.state}
+          onChange={this.handleInputChange}
+          onAddExperience={this.handleAddExperience}
+          onDelete={this.deleteExperience}
+        />
         <Display data={this.state} />
       </div>
     );
@@ -42,20 +84,18 @@ export default App;
 
 /*
 
-educational experience (school name, title of study, date
+- Modify onChange to process index
+-- Handle change in Form
+-- Handle data in Display
+
+************
+
+Button hover effect
+
+- educational experience (school name, title of study, date
 of study)
 
-experience (company name, position title, main tasks
-of your jobs, date from and until when you worked for that company)
-
-add and delete buttons for each section
-- education
-- experience
-
-Typing in the input fields should
-display the value of your input fields in HTML elements. 
-
-add your components. 
-Styles folder - You’ll need to import these in the component files to use them. 
+- education form
+- education display
 
 */

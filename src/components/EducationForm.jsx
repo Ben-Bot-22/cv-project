@@ -8,11 +8,11 @@ const styles = {
   color: 'blue',
 };
 
-export default class Experience extends Component {
+export default class EducationForm extends Component {
   render() {
     return (
       <div style={styles}>
-        <h3>Experience</h3>
+        <h3>Education</h3>
       </div>
     );
   }

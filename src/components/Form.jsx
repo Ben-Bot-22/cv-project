@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Education from './Education';
-import Experience from './Experience';
-import GeneralInfo from './GeneralInfo';
+import EducationForm from './EducationForm';
+import ExperienceForm from './ExperienceForm';
+import GeneralForm from './GeneralForm';
 
 const styles = {
   border: '2px solid blue',
@@ -16,9 +16,14 @@ export default class Form extends Component {
   render() {
     return (
       <div style={styles}>
-        <GeneralInfo onChange={this.props.onChange} />
-        <Experience />
-        <Education />
+        <GeneralForm onChange={this.props.onChange} />
+        <ExperienceForm
+          data={this.props.data}
+          onChange={this.props.onChange}
+          onAddExperience={this.props.onAddExperience}
+          onDelete={this.props.onDelete}
+        />
+        <EducationForm />
       </div>
     );
   }

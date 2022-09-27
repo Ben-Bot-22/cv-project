@@ -10,7 +10,7 @@ const styles = {
   color: 'blue',
 };
 
-export default class GeneralInfo extends Component {
+export default class GeneralForm extends Component {
   render() {
     return (
       <div style={styles}>

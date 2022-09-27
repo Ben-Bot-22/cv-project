@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import DisplayGeneral from './DisplayGeneral';
+import GeneralDisplay from './GeneralDisplay';
+import ExperienceDisplay from './ExperienceDisplay';
 
 const styles = {
   border: '2px solid blue',
@@ -8,7 +9,7 @@ const styles = {
   padding: '0px 20px',
   // width: '40%',
   color: 'blue',
-  width: 500,
+  width: 400,
   minWidth: 400,
 };
 
@@ -22,8 +23,9 @@ export default class Display extends Component {
   render() {
     return (
       <div style={styles}>
-        <DisplayGeneral data={this.props.data} />
+        <GeneralDisplay data={this.props.data} />
         <hr style={barStyle} />
+        <ExperienceDisplay data={this.props.data} />
       </div>
     );
   }

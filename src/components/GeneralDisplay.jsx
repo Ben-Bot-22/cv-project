@@ -32,7 +32,7 @@ const descStyle = {
   fontSize: '12px',
 };
 
-export default class DisplayGeneral extends Component {
+export default class GeneralDisplay extends Component {
   render() {
     return (
       <div>
