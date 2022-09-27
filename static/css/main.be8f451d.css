@@ -1,0 +1,2 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap);::-webkit-input-placeholder{box-sizing:border-box;font-family:Roboto Mono,monospace}::placeholder,body,html,input{box-sizing:border-box;font-family:Roboto Mono,monospace}body,html{background-color:#ffdead}::-webkit-input-placeholder{background-color:#fff}::placeholder{background-color:#fff}.forms{display:flex;flex-direction:row;gap:1rem;justify-content:center}@media (max-width:700px){.forms{flex-direction:column}}
+/*# sourceMappingURL=main.be8f451d.css.map*/
