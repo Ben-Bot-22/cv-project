@@ -10,7 +10,7 @@ const App = () => {
 
   const handleGeneralChange = (event) => {
     setCv((prevState) => ({
-      prevState,
+      ...prevState,
       generalInfo: {
         ...prevState.generalInfo,
         [event.target.name]: event.target.value,
@@ -19,31 +19,29 @@ const App = () => {
   };
 
   const handleExperienceChange = (event, id) => {
-    // setCv((prevState) => ({
-
-    // }))
-
-    this.setState((state) => ({
-      experiences: state.experiences.map((exp) => {
-        if (exp.id === id) {
-          return { ...exp, [event.target.name]: event.target.value };
-        } else {
-          return exp;
+    const { name, value } = event.target;
+    setCv((prevState) => {
+      const newExperience = prevState.experience.map((experienceItem) => {
+        if (experienceItem.id === id) {
+          return { ...experienceItem, [name]: value };
         }
-      }),
-    }));
+        return experienceItem;
+      });
+      return { ...prevState, experience: [...newExperience] };
+    });
   };
 
   const handleEducationChange = (event, id) => {
-    this.setState((state) => ({
-      educations: state.educations.map((edu) => {
-        if (edu.id === id) {
-          return { ...edu, [event.target.name]: event.target.value };
-        } else {
-          return edu;
+    const { name, value } = event.target;
+    setCv((prevState) => {
+      const newEducation = prevState.education.map((educationItem) => {
+        if (educationItem.id === id) {
+          return { ...educationItem, [name]: value };
         }
-      }),
-    }));
+        return educationItem;
+      });
+      return { ...prevState, education: [...newEducation] };
+    });
   };
 
   const handleAddExperience = (e) => {
@@ -80,8 +78,9 @@ const App = () => {
   };
 
   const deleteEducation = (id) => {
+    // setCv();
     this.setState((state) => ({
-      educations: state.educations.filter((edu) => edu.id !== id),
+      education: state.educations.filter((edu) => edu.id !== id),
     }));
   };
 
@@ -103,9 +102,3 @@ const App = () => {
 };
 
 export default App;
-
-/*
-
-rewrite set state functions 
-
-*/

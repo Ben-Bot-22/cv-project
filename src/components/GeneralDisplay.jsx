@@ -34,7 +34,8 @@ const descStyle = {
 
 function GeneralDisplay(props) {
   const { data } = props;
-  const { name, title, phone, email, location, description } = data;
+  const { generalInfo } = data;
+  const { name, title, phone, email, location, description } = generalInfo;
   return (
     <div>
       <div style={styles}>
