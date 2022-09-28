@@ -45,42 +45,49 @@ const App = () => {
   };
 
   const handleAddExperience = (e) => {
-    this.setState((state) => ({
-      experiences: state.experiences.concat(state.experience),
-      experience: {
-        id: uuidv4(),
-        organization: 'Organization',
-        position: 'Position',
-        startDate: 'Start',
-        endDate: 'End',
-        description: 'Description',
-      },
+    setCv((prevState) => ({
+      ...prevState,
+      experience: [
+        ...prevState.experience,
+        {
+          id: uuidv4(),
+          organization: 'Organization',
+          position: 'Position',
+          startDate: 'Start',
+          endDate: 'End',
+          description: 'Description',
+        },
+      ],
     }));
   };
 
   const handleAddEducation = (e) => {
-    this.setState((state) => ({
-      educations: state.educations.concat(state.education),
-      education: {
-        id: uuidv4(),
-        university: 'University',
-        course: 'Course',
-        startDate: 'Start',
-        endDate: 'End',
-      },
+    setCv((prevState) => ({
+      ...prevState,
+      education: [
+        ...prevState.education,
+        {
+          id: uuidv4(),
+          university: 'University',
+          course: 'Course',
+          startDate: 'Start',
+          endDate: 'End',
+        },
+      ],
     }));
   };
 
   const deleteExperience = (id) => {
-    this.setState((state) => ({
-      experiences: state.experiences.filter((exp) => exp.id !== id),
+    setCv((prevState) => ({
+      ...prevState,
+      experience: prevState.experience.filter((exp) => exp.id !== id),
     }));
   };
 
   const deleteEducation = (id) => {
-    // setCv();
-    this.setState((state) => ({
-      education: state.educations.filter((edu) => edu.id !== id),
+    setCv((prevState) => ({
+      ...prevState,
+      education: prevState.education.filter((edu) => edu.id !== id),
     }));
   };
 
