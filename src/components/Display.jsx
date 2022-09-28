@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import GeneralDisplay from './GeneralDisplay';
 import ExperienceDisplay from './ExperienceDisplay';
 import EducationDisplay from './EducationDisplay';
@@ -19,15 +19,16 @@ const barStyle = {
   border: 'none',
 };
 
-export default class Display extends Component {
-  render() {
-    return (
-      <div style={styles}>
-        <GeneralDisplay data={this.props.data} />
-        <hr style={barStyle} />
-        <ExperienceDisplay data={this.props.data} />
-        <EducationDisplay data={this.props.data} />
-      </div>
-    );
-  }
+function Display(props) {
+  const { data } = props;
+  return (
+    <div style={styles}>
+      <GeneralDisplay data={data} />
+      <hr style={barStyle} />
+      <ExperienceDisplay data={data} />
+      <EducationDisplay data={data} />
+    </div>
+  );
 }
+
+export default Display;

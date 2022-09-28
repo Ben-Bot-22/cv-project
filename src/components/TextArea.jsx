@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const styles = {
   resize: 'none',
@@ -6,19 +6,20 @@ const styles = {
   color: 'blue',
 };
 
-export default class TextArea extends Component {
-  render() {
-    return (
-      <div>
-        <textarea
-          style={styles}
-          rows="5"
-          name={this.props.name}
-          placeholder={this.props.placeholder}
-          value={this.props.value}
-          onChange={this.props.onChange}
-        />
-      </div>
-    );
-  }
-}
+const TextArea = (props) => {
+  const { name, placeholder, value, onChange } = props;
+  return (
+    <div>
+      <textarea
+        style={styles}
+        rows="5"
+        name={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
+    </div>
+  );
+};
+
+export default TextArea;

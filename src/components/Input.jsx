@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const styles = {
   color: 'blue',
@@ -6,19 +6,19 @@ const styles = {
   height: '25px',
 };
 
-export default class Input extends Component {
-  render() {
-    return (
-      <div>
-        <input
-          style={styles}
-          name={this.props.name}
-          type={this.props.type}
-          placeholder={this.props.placeholder}
-          // value={this.props.value}
-          onChange={this.props.onChange}
-        />
-      </div>
-    );
-  }
-}
+const Input = (props) => {
+  const { name, type, placeholder, onChange } = props;
+  return (
+    <div>
+      <input
+        style={styles}
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        onChange={onChange}
+      />
+    </div>
+  );
+};
+
+export default Input;

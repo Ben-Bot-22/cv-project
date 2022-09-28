@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import EducationForm from './EducationForm';
 import ExperienceForm from './ExperienceForm';
 import GeneralForm from './GeneralForm';
@@ -12,26 +12,34 @@ const styles = {
   minWidth: 200,
 };
 
-export default class Form extends Component {
-  render() {
-    // console.log('Form Props:');
-    // console.log(this.props);
-    return (
-      <div style={styles}>
-        <GeneralForm onChange={this.props.onChange} />
-        <ExperienceForm
-          data={this.props.data}
-          onExperienceChange={this.props.onExperienceChange}
-          onAddExperience={this.props.onAddExperience}
-          onDeleteExperience={this.props.onDeleteExperience}
-        />
-        <EducationForm
-          data={this.props.data}
-          onEducationChange={this.props.onEducationChange}
-          onAddEducation={this.props.onAddEducation}
-          onDeleteEducation={this.props.onDeleteEducation}
-        />
-      </div>
-    );
-  }
-}
+const Form = (props) => {
+  const {
+    data,
+    onChange,
+    onExperienceChange,
+    onAddExperience,
+    onDeleteExperience,
+    onEducationChange,
+    onAddEducation,
+    onDeleteEducation,
+  } = props;
+  return (
+    <div style={styles}>
+      <GeneralForm onChange={onChange} />
+      <ExperienceForm
+        data={data}
+        onExperienceChange={onExperienceChange}
+        onAddExperience={onAddExperience}
+        onDeleteExperience={onDeleteExperience}
+      />
+      <EducationForm
+        data={data}
+        onEducationChange={onEducationChange}
+        onAddEducation={onAddEducation}
+        onDeleteEducation={onDeleteEducation}
+      />
+    </div>
+  );
+};
+
+export default Form;

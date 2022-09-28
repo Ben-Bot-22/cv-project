@@ -11,29 +11,29 @@ const styles = {
   },
 };
 
-export default class ExperienceDisplay extends Component {
-  render() {
-    const { data } = this.props;
-    const { experiences } = data;
-    return (
-      <div>
-        <h3>Experience</h3>
-        {experiences.map((exp) => {
-          return (
-            <div key={exp.id}>
-              <div style={styles.head}>
-                <p style={styles.p}>
-                  {exp.organization} - {exp.position}
-                </p>
-                <p style={styles.p}>
-                  {exp.startDate} - {exp.endDate}
-                </p>
-              </div>
-              <p>{exp.description}</p>
+function ExperienceDisplay(props) {
+  const { data } = props;
+  const { experience } = data;
+  return (
+    <div>
+      <h3>Experience</h3>
+      {experience.map((exp) => {
+        return (
+          <div key={exp.id}>
+            <div style={styles.head}>
+              <p style={styles.p}>
+                {exp.organization} - {exp.position}
+              </p>
+              <p style={styles.p}>
+                {exp.startDate} - {exp.endDate}
+              </p>
             </div>
-          );
-        })}
-      </div>
-    );
-  }
+            <p>{exp.description}</p>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
+
+export default ExperienceDisplay;

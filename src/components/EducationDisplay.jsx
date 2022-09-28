@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const styles = {
   head: {
@@ -14,26 +14,26 @@ const styles = {
   },
 };
 
-export default class EducationDisplay extends Component {
-  render() {
-    const { data } = this.props;
-    const { educations } = data;
-    return (
-      <div style={styles.div}>
-        <h3>Education</h3>
-        {educations.map((edu) => {
-          return (
-            <div key={edu.id} style={styles.head}>
-              <p style={styles.p}>
-                {edu.university} - {edu.course}
-              </p>
-              <p style={styles.p}>
-                {edu.startDate} - {edu.endDate}
-              </p>
-            </div>
-          );
-        })}
-      </div>
-    );
-  }
+function EducationDisplay(props) {
+  const { data } = props;
+  const { education } = data;
+  return (
+    <div style={styles.div}>
+      <h3>Education</h3>
+      {education.map((edu) => {
+        return (
+          <div key={edu.id} style={styles.head}>
+            <p style={styles.p}>
+              {edu.university} - {edu.course}
+            </p>
+            <p style={styles.p}>
+              {edu.startDate} - {edu.endDate}
+            </p>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
+
+export default EducationDisplay;

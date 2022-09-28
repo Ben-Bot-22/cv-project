@@ -17,26 +17,27 @@ const styles = {
   },
 };
 
-export default class ExperienceForm extends Component {
-  render() {
-    // console.log(this.props);
-    return (
-      <div style={styles.form}>
-        <h3>Experience</h3>
-        {this.props.data.experiences.map((experience) => {
-          return (
-            <ExperienceItem
-              key={experience.id}
-              experience={experience}
-              onExperienceChange={this.props.onExperienceChange}
-              onDeleteExperience={this.props.onDeleteExperience}
-            />
-          );
-        })}
-        <button style={styles.button} onClick={this.props.onAddExperience}>
-          Add
-        </button>
-      </div>
-    );
-  }
-}
+const ExperienceForm = (props) => {
+  const { data, onExperienceChange, onAddExperience, onDeleteExperience } =
+    props;
+  return (
+    <div style={styles.form}>
+      <h3>Experience</h3>
+      {data.experience.map((exp) => {
+        return (
+          <ExperienceItem
+            key={exp.id}
+            experience={exp}
+            onExperienceChange={onExperienceChange}
+            onDeleteExperience={onDeleteExperience}
+          />
+        );
+      })}
+      <button style={styles.button} onClick={onAddExperience}>
+        Add
+      </button>
+    </div>
+  );
+};
+
+export default ExperienceForm;

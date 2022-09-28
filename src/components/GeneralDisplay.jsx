@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const styles = {
   display: 'flex',
@@ -32,23 +32,25 @@ const descStyle = {
   fontSize: '12px',
 };
 
-export default class GeneralDisplay extends Component {
-  render() {
-    return (
-      <div>
-        <div style={styles}>
-          <div>
-            <h2 style={nameStyle}>{this.props.data.name}</h2>
-            <h3 style={titleStyle}>{this.props.data.title}</h3>
-          </div>
-          <div style={dataStyle}>
-            <p style={pStyle}>{this.props.data.phone}</p>
-            <p style={pStyle}>{this.props.data.email}</p>
-            <p style={pStyle}>{this.props.data.location}</p>
-          </div>
+function GeneralDisplay(props) {
+  const { data } = props;
+  const { name, title, phone, email, location, description } = data;
+  return (
+    <div>
+      <div style={styles}>
+        <div>
+          <h2 style={nameStyle}>{name}</h2>
+          <h3 style={titleStyle}>{title}</h3>
         </div>
-        <p style={descStyle}>{this.props.data.description}</p>
+        <div style={dataStyle}>
+          <p style={pStyle}>{phone}</p>
+          <p style={pStyle}>{email}</p>
+          <p style={pStyle}>{location}</p>
+        </div>
       </div>
-    );
-  }
+      <p style={descStyle}>{description}</p>
+    </div>
+  );
 }
+
+export default GeneralDisplay;
